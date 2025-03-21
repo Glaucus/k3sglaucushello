@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: k3sglaucushello
+  labels:
+    app: k3sglaucushello
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: k3sglaucushello
+  template:
+    metadata:
+      labels:
+        app: k3sglaucushello
+    spec:
+      imagePullSecrets:
+        - name: regcred
+      containers:
+        - name: k3sglaucushello
+          image: nuriofernandez/k3sglaucushello:v0.0.6 # Replace with your actual image
+          ports:
+            - containerPort: 80
+          resources:
+            limits:
+              memory: "100Mi"
+              cpu: "100m"
+            requests:
+              memory: "90Mi"
+              cpu: "100m"
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: k3sglaucushello-service
+spec:
+  selector:
+    app: k3sglaucushello
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+  type: ClusterIP
