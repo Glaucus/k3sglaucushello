@@ -32,5 +32,6 @@ jobs:
 
       - name: Deploy to Kubernetes
         run: |
+          kubectl apply -f .k3s/
           kubectl set image deployment/k3sglaucushello k3sglaucushello=nuriofernandez/k3sglaucushello:${{ github.sha }} --kubeconfig=kubeconfig.yaml
           kubectl rollout status deployment/k3sglaucushello --kubeconfig=kubeconfig.yaml
