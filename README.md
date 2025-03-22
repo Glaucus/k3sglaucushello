@@ -2,7 +2,7 @@
 
 This repository aims to provide a easy to replicate baseline/template for other deployments on the Glaucus K3S infrastructure
 
-# How kubernettes files are handled?
+# How kubernetes files are handled?
 
 Just place all the .yaml files on the `.k3s` folder all the deployment will execute the updates autmatically.
 
