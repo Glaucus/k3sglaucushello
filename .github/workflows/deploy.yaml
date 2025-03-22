@@ -30,7 +30,7 @@ jobs:
 
       - name: Replace GITHUB_SECRET_ variables with actual GitHub Secrets
         run: |
-          sed -i -E 's/GITHUB_SECRET_FANCY_SECRET/'"${{ secrets.FANCY_SECRET }}"'/g' .k8s/*.yaml
+          sed -i -E 's/GITHUB_SECRET_FANCY_SECRET/'"${{ secrets.FANCY_SECRET }}"'/g' .k3s/*.yaml
 
       - name: Deploy to Kubernetes
         run: |
