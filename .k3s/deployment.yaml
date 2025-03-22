@@ -20,8 +20,8 @@ spec:
         - name: k3sglaucushello
           image: nuriofernandez/k3sglaucushello:latest
           env:
-            - name: GITHUB_SECRET_FANCY_SECRET
-              value: "super-fancy-secret"
+            - name: SECRET
+              value: "GITHUB_SECRET_FANCY_SECRET"
           ports:
             - containerPort: 80
           resources:
