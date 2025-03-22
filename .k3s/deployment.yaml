@@ -19,6 +19,9 @@ spec:
       containers:
         - name: k3sglaucushello
           image: nuriofernandez/k3sglaucushello:latest
+          env:
+            - name: SECRET
+              value: "super-fancy-secret"
           ports:
             - containerPort: 80
           resources:
