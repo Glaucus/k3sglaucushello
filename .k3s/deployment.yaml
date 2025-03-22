@@ -18,7 +18,7 @@ spec:
         - name: regcred
       containers:
         - name: k3sglaucushello
-          image: nuriofernandez/k3sglaucushello:v0.0.6 # Replace with your actual image
+          image: nuriofernandez/k3sglaucushello:latest
           ports:
             - containerPort: 80
           resources:
