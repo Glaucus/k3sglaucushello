@@ -28,6 +28,10 @@ jobs:
           docker build -t ${{ secrets.DOCKER_USERNAME }}/${{ secrets.DOCKER_IMAGE_TAG }}:${{ github.sha }} .
           docker push ${{ secrets.DOCKER_USERNAME }}/${{ secrets.DOCKER_IMAGE_TAG }}:${{ github.sha }}
 
+      - name: Replace GITHUB_SECRET_ variables with actual GitHub Secrets
+        run: |
+          sed -i -E 's/GITHUB_SECRET_FANCY_SECRET/'"${{ secrets.FANCY_SECRET }}"'/g' .k8s/*.yaml
+
       - name: Deploy to Kubernetes
         run: |
           kubectl apply -f .k3s/ --kubeconfig=kubeconfig.yaml
