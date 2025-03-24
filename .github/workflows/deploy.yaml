@@ -35,5 +35,5 @@ jobs:
       - name: Deploy to Kubernetes
         run: |
           kubectl apply -f .k3s/ --kubeconfig=kubeconfig.yaml
-          kubectl set image deployment/${{ secrets.K3S_DEPLOYMENT }} -n ${{ secrets.K3S_NAMESPACE }} ${{ secrets.K3S_DEPLOYMENT }}=${{ secrets.DOCKER_USERNAME }}/${{ secrets.DOCKER_IMAGE_TAG }}:${{ github.sha }} --kubeconfig=kubeconfig.yaml
+          kubectl set image deployment/${{ secrets.K3S_DEPLOYMENT }} -n ${{ secrets.K3S_NAMESPACE }} ${{ secrets.K3S_DEPLOYMENT }}=registry.glaucus.net/${{ secrets.DOCKER_USERNAME }}/${{ secrets.DOCKER_IMAGE_TAG }}:${{ github.sha }} --kubeconfig=kubeconfig.yaml
           kubectl rollout status deployment/${{ secrets.K3S_DEPLOYMENT }} -n ${{ secrets.K3S_NAMESPACE }} --kubeconfig=kubeconfig.yaml
